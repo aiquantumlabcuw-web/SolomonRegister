@@ -1,0 +1,34 @@
+{
+    "department": [
+      { "label": "Bussiness School", "value": "Bussiness School" },
+      { "label": "Computer Science", "value": "Computer Science" },
+      { "label": "Pharmacy School", "value": "Pharmacy School" },
+      { "label": "Engineering School", "value": "Engineering School" },
+      { "label": "Others", "value": "Others" }
+    ],
+    "priority": [
+      { "label": "Low", "value": "Low" },
+      { "label": "Medium", "value": "Medium" },
+      { "label": "High", "value": "High" }
+    ],
+    "ticketType": [
+        { "label": "Resources Request (Solomon)", "value": "Resources Request (Solomon)" },
+        { "label": "Collaboration Requests", "value": "Collaboration Requests" },
+        { "label": "Consulting", "value": "Consulting" },
+        { "label": "Customer Service", "value": "Customer Service" }
+      ],
+      "role": [
+        { "label": "Student", "value": "Student" },
+        { "label": "Faculty", "value": "Faculty" },
+        { "label": "Community Member", "value": "Community Member" },
+        { "label": "Industry Partner", "value": "Industry Partner" }
+      ],
+      "status": [
+        { "value": "Open", "label": "Open" },
+        { "value": "In Progress", "label": "In Progress" },
+        { "value": "Ready", "label": "Ready" },
+        { "value": "Shipped", "label": "Shipped" },
+        { "value": "Closed", "label": "Closed" }
+      ]
+
+  }

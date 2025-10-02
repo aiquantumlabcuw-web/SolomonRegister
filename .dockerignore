@@ -1,0 +1,8 @@
+**/node_modules/
+**/dist
+.git
+package-lock.json
+npm-debug.log
+.coverage
+.coverage.*
+/uploads

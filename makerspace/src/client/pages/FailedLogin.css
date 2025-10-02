@@ -1,0 +1,179 @@
+/* Base styling for a light UI */
+body {
+  background-color: #f9f9f9;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px; /* Reduced base font size */
+}
+
+/* Dropdown transitions */
+.dropdown-enter {
+  opacity: 0;
+  transform: translateY(-10%);
+}
+.dropdown-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+}
+.dropdown-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.dropdown-exit-active {
+  opacity: 0;
+  transform: translateY(-10%);
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+}
+
+/* Rule dropdown container with light background */
+.rule-dropdown {
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  width: 450px;
+}
+
+/* Rule item styling for a light look */
+.rule-item {
+  background: #fafafa;
+  padding: 8px 12px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.rule-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  background-color: rgba(79, 70, 229, 0.1);
+  transition: width 0.3s ease;
+  z-index: 0;
+}
+.rule-item:hover::before {
+  width: 100%;
+}
+.apply-rule-btn {
+  transform: translateX(10px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.rule-item:hover .apply-rule-btn {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Border colors for rule severities with light tones */
+.rule-severity-low {
+  border-left: 4px solid #4CAF50; /* green */
+}
+.rule-severity-medium {
+  border-left: 4px solid #FF9800; /* amber */
+}
+.rule-severity-high {
+  border-left: 4px solid #F44336; /* red */
+}
+.rule-severity-custom {
+  border-left: 4px solid #3F51B5; /* indigo */
+}
+
+/* Animation for high alert indicator */
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 5px rgba(255, 82, 82, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 82, 82, 0);
+  }
+}
+.alert-high .alert-indicator {
+  animation: pulse 2s infinite;
+}
+
+/* Table styling improvements */
+.table {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.table th, .table td {
+  padding: 12px;
+  font-size: 0.8rem; /* Smaller table font */
+}
+.table th {
+  background-color: #f1f1f1;
+  font-weight: 600;
+}
+.table tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Unified Admin Panel container styles */
+.admin-panel {
+  background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 2rem;
+}
+.admin-panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .admin-panel,
+  .ip-overview {
+    margin: 0.5rem;
+    padding: 1rem;
+    width: 100%;
+  }
+}
+
+/* IP Overview container to clearly separate from Admin Panel */
+.ip-overview {
+  margin-top: 2rem;
+}
+
+/* Fade animation for admin panel */
+.fade-appear, .fade-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.fade-appear-active, .fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+}
+
+/* Optionally, update form elements in admin panel for a cleaner look */
+.create-rule input,
+.create-rule select,
+.create-rule button {
+  transition: all 0.3s ease;
+  font-size: 0.9rem; /* Slightly smaller font for inputs and buttons */
+}
+.create-rule input:focus,
+.create-rule select:focus {
+  box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+}
+.create-rule button {
+  background-color: #2563eb;
+  color: #fff;
+}
+.create-rule button:hover {
+  background-color: #1d4ed8;
+}

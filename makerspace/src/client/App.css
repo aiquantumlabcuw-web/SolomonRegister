@@ -1,0 +1,10 @@
+/* src/index.css or src/App.css */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.backgroundImage3dPrinter {
+  background-image: url('./assets/3dprinter.jpg');
+  background-size: cover;
+  background-position: center;
+} 

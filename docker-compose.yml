@@ -1,0 +1,104 @@
+version: '3.9'
+
+services:
+  mongo:
+    # Builds your custom Mongo image that seeds with database/mongo-init.js
+    build:
+      context: .
+      dockerfile: db.Dockerfile
+    image: mongo:1.0.0
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    env_file: .env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - react_network
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.runCommand({ ping: 1 })"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    restart: always
+    env_file: .env
+    environment:
+      # Use the service hostname "mongodb" and authSource=admin for root creds
+      ME_CONFIG_MONGODB_URL: mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongodb:27017/?authSource=admin
+      ME_CONFIG_BASICAUTH_USERNAME: ${MONGO_EXPRESS_USERNAME}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${MONGO_EXPRESS_PASSWORD}
+    ports:
+      - "8081:8081"
+    networks:
+      - react_network
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  server:
+    build:
+      context: .
+      dockerfile: server.Dockerfile
+    image: server:1.0.0
+    container_name: server
+    restart: always
+    env_file: .env
+    environment:
+      # Force DB host to the Mongo service on the Compose network
+      MONGODB_URI: mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongodb:27017/makerspace?authSource=admin
+      URI:         mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongodb:27017/makerspace?authSource=admin
+      NODE_ENV:    production
+    depends_on:
+      mongo:
+        condition: service_healthy
+    volumes:
+      - ./makerspace_node:/server
+      - server-node:/server/node_modules
+      - server-uploads:/server/uploads
+    ports:
+      - "3000:3000"
+    networks:
+      - react_network
+    command: >
+      sh -c "
+        node -e \"console.log('Using MONGODB_URI host=',
+          (new URL(process.env.MONGODB_URI)).hostname)\" &&
+        node scripts/initEmailTemplates.js &&
+        npm start
+      "
+
+  app:
+    build:
+      context: .
+      dockerfile: app.Dockerfile
+    image: app:1.0.0
+    container_name: app
+    restart: always
+    depends_on:
+      - server
+    volumes:
+      - app-node:/app/node_modules
+      - ./makerspace/config:/app/config
+      - ./makerspace/src/client:/app/src/client
+    ports:
+      - "5050:5050"
+    networks:
+      - react_network
+
+volumes:
+  mongo-data:
+  server-node:
+  server-uploads:
+  app-node:
+
+networks:
+  react_network:
+    driver: bridge

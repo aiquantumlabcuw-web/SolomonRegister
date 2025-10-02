@@ -1,0 +1,227 @@
+/* Global styling for the Contact Us page */
+.contact-us-wrapper {
+  background-color: #f0f4f8;
+  padding: 30px 15px;  /* Reduced overall padding */
+}
+
+/* Header Styles */
+.contact-us-header {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.contact-us-heading {
+  font-size: 1.2rem; /* Reduced from 2rem */
+  color: #1f2937;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.tagline {
+  font-size: 0.6rem; /* Reduced from 1rem */
+  color: #1f2937;
+  text-align: center;
+}
+
+/* Main Content Layout */
+.contact-us-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* Shared styles for contact info and form sections */
+.contact-info,
+.form-section {
+  flex: 1 1 200px;
+  padding: 10px;  /* Reduced padding */
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-height: 200px;  /* Reduced overall container height */
+  overflow: auto;
+}
+
+/* Location Section (Map Holder) */
+.location-section {
+  background-color: #e3f6f5;
+  max-height: 20px;  /* Reduced from 100px */
+  overflow: hidden;
+}
+
+/* Map Container */
+.map-container {
+  height: 20px;  /* Reduced from 100px */
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Location Heading & Description */
+.location-heading {
+  font-size: 0.6rem; /* Reduced from 1.25rem */
+  color: #1F2937;
+  margin-bottom: 5px;
+  padding: 3px 0;
+  text-align: center;
+}
+
+.location-description {
+  font-size: 0.6rem; /* Reduced from 1rem */
+  padding-right: 10px;
+  color: #1F2937;
+  text-align: center;
+}
+
+/* Contact Info Items */
+.contact-email,
+.contact-phone {
+  font-size: 0.6rem; /* Reduced from 1rem */
+  padding-right: 10px;
+  color: #f9f9f9;
+}
+
+.contact-details {
+  margin-bottom: 10px;  /* Reduced margin */
+  padding-left: 8px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.contact-item h3 {
+  font-size: 0.6rem; /* Reduced from 0.9rem */
+  color: #1F2937;
+  margin-left: 8px;
+}
+
+.contact-item-details {
+  font-size: 0.6rem; /* Reduced from 1rem */
+  color: #f9f9f9;
+  margin-left: 8px;
+  padding-right: 8px;
+}
+
+/* Form Elements */
+.form-input,
+.form-textarea {
+  width: 80%;
+  margin-bottom: 8px;  /* Reduced margin */
+  padding: 6px;  /* Reduced padding */
+  border-radius: 4px;
+  border: 1px solid #d1d1d1;
+  font-size: 0.6rem;  /* Reduced from 0.9rem */
+  color: #1f2937;
+  background-color: #f9f9f9;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #25ae8d;
+}
+
+.submit-button {
+  padding: 6px 12px;  /* Reduced padding */
+  background-color: #008087;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.6rem;  /* Reduced from 0.9rem */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #25ae8d;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .contact-us-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contact-us-heading {
+    font-size: 1.2rem;
+  }
+  
+  .tagline {
+    font-size: 0.7rem;
+  }
+  
+  .contact-info,
+  .form-section {
+    width: 100%;
+    max-width: 500px;  /* Reduced from 450px */
+    margin: 0 auto;
+  }
+  
+  .location-heading {
+    font-size: 0.7rem;
+  }
+  
+  .location-description {
+    font-size: 0.6rem;
+  }
+  
+  .contact-email,
+  .contact-phone {
+    font-size: 0.6rem;
+  }
+  
+  .contact-item h3 {
+    font-size: 0.7rem;
+  }
+  
+  .contact-item-details {
+    font-size: 0.6rem;
+  }
+  
+  .form-input,
+  .form-textarea {
+    font-size: 0.6rem;
+  }
+  
+  .submit-button {
+    font-size: 0.6rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .contact-us-wrapper {
+    padding: 20px 10px;
+  }
+  
+  .contact-us-heading {
+    font-size: 1.2rem;
+  }
+  
+  .tagline {
+    font-size: 0.7rem;
+  }
+  
+  .contact-item h3 {
+    font-size: 0.6rem;
+  }
+  
+  .contact-item-details {
+    font-size: 0.6rem;
+  }
+  
+  .form-input,
+  .form-textarea {
+    font-size: 0.6rem;
+  }
+  
+  .submit-button {
+    font-size: 0.6rem;
+    padding: 5px 10px;
+  }
+}
