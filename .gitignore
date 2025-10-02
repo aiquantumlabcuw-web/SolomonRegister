@@ -2,7 +2,7 @@
 .DS_Store
 
 makerspace/*.env
-makerspace/config/GlobalConfig.js
+
 **/.env
 cron/node_modules
 
