@@ -42,7 +42,7 @@ console.log('proxy set')
 // Configure CORS to allow credentials (cookies) from the frontend
 app.use(
   cors({
-    origin: ["https://cuwcs.com/","http://cuwcs.com/","http://localhost:5174", "http://localhost:5173","http://localhost:5050", "http://72.167.47.19:5050", "https://72.167.47.19:443", "https://72.167.47.19:5050", "https://72.167.47.19","https://www.cuwcs.com/","cuwcs.com/"], // React app's origin
+    origin: ["https://cuwcs.com/","http://cuwcs.com/","http://localhost:5174", "https://solomon-register.vercel.app","http://localhost:5173","http://localhost:5050", "http://72.167.47.19:5050", "https://72.167.47.19:443", "https://72.167.47.19:5050", "https://72.167.47.19","https://www.cuwcs.com/","cuwcs.com/"], // React app's origin
     credentials: true, // Allow cookies to be sent with requests
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"]
   })
